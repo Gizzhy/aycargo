@@ -1,0 +1,89 @@
+.footer{
+    padding: 10vh 5vw;
+    background-color: #1C174F;
+    color: white;
+    >img:nth-of-type(1) {
+        display: block;
+        margin: 0 auto;
+        width: 135px;
+      }
+      >div:nth-of-type(1){
+        height: 2px;
+        background-color: white;
+        width: 100%;
+        margin-top: 5px;
+      }
+      >div:nth-of-type(2){
+        display: flex;
+        justify-content: space-between;
+        margin-top: 25px;
+        >div{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            >p:nth-of-type(1){
+                font-weight: 500;
+                font-size:0.85rem;
+            }
+            >div{
+                display: flex;
+                // align-items: center;
+                gap: 10px;
+                >span{
+                    font-size: 0.75rem;
+                }
+            }
+            >a{
+                font-size: 0.75rem;
+            }
+        }
+        >div:nth-of-type(5){
+            >div{
+                background-color: #2C2D5B;
+                border-radius: 10px;
+                height: 27vh;
+                width: 30vw;
+                display: flex;
+                justify-content: space-around;
+                gap: 10px;
+                flex-direction: column;
+                padding: 5px 15px;
+                >p:nth-of-type(1){
+                    font-weight: 500;
+                }
+                >p:nth-of-type(2){
+                    font-weight: 500;
+                    font-size: 0.75rem;
+                    color: #ffffff80;
+                }
+                >div{
+                    display: flex;
+                    align-items: center;
+                    >input{
+                        height: 6.5vh;
+                        width: 15vw;
+                        background-color: #02273A;
+                        color: white;
+                        border: 0;
+                        border-radius: 7px 0 0 7px;
+                    }
+                    >input::placeholder{
+                        padding: 0 15px;
+                    }
+                    >button{
+                        background-color: #F7761F;
+                        border: 0;
+                        border-radius: 0 7px 7px 0;
+                        color: white;
+                        cursor: pointer;
+                        height: 6.5vh;
+                        width: 8vw;
+                    }
+                    >button:hover{
+                        background-color: #e26d1e;
+                    }
+                }
+            }
+        }
+      }
+}
