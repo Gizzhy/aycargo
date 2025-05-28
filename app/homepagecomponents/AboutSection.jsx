@@ -9,33 +9,36 @@ const AboutSection = () => {
   return (
     <>
       <div className={styles.aboutsec}>
-        <p>About Us</p>
+        <p>Why Work With Us</p>
         <div>
           <div>
             <p>We Help To Get Solutions</p>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s.
+              At AY CARGO, we deliver reliable, secure, and efficient cargo and
+              logistics services tailored to both individuals and businesses.
+              With global reach and local expertise, we ensure your shipments
+              arrive safely and on time, whether by air, sea, or road.
             </p>
             <div>
               <div>
                 <Image src={rocket} alt="rocket" />
                 <div>
-                  <p>Lorem Ipsum</p>
+                  <p>Global Reach</p>
                   <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
+                    From international shipping to domestic deliveries, AY CARGO
+                    combines worldwide capabilities with local knowledge to make
+                    your logistics experience hassle-free.
                   </p>
                 </div>
               </div>
               <div>
                 <Image src={bulb} alt="rocket" />
                 <div>
-                  <p>Lorem Ipsum</p>
+                  <p>On-Time Deliveries</p>
                   <p>
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry.
+                    We understand the importance of timing. Our dedicated team
+                    and efficient network ensure your shipments arrive when
+                    expected.
                   </p>
                 </div>
               </div>
