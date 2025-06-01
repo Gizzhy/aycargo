@@ -62,7 +62,9 @@ const Page = () => {
         useCORS: true,
       });
 
-      const imgData = canvas.toDataURL("image/png");
+    //   const imgData = canvas.toDataURL("image/png");
+    const imgData = canvas.toDataURL("image/jpeg", 0.6); // 0.6 = 60% quality
+
 
       const pdf = new jsPDF("p", "pt", "a4");
       const pageHeight = pdf.internal.pageSize.getHeight();
@@ -76,7 +78,10 @@ const Page = () => {
       let position = 0;
 
       // First page
-      pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+    //   pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+    pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST');
+
+
       heightLeft -= pageHeight;
 
       // Additional pages
