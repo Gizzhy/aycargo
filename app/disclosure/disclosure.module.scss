@@ -1,0 +1,128 @@
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem;
+    // background: #fafafa;
+    // border-radius: 8px;
+    // border: 1px solid #ddd;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #1C174F;
+
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputGroup label {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  
+  .inputGroup input {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .signature {
+    margin-top: 1rem;
+  }
+  
+  .signature label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  .signatureCanvas {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .clearBtn {
+    margin-top: 0.4rem;
+    background: none;
+    border: none;
+    color: #e26d1e;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: underline;
+  }
+  
+  .submitBtn {
+    background-color: #e26d1e;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 1rem;
+    align-self: flex-start;
+  }
+  
+  .loading {
+    color: #555;
+    font-style: italic;
+    margin-top: 1rem;
+  }
+  
+
+
+// pdf styling
+// pdf styling
+// pdf styling
+// pdf styling
+.pdfItsel{
+    .logoA{
+        display: flex;
+        justify-content: center;
+    }
+    >p:nth-of-type(1){
+        color: #1C174F;
+        font-weight: 600;
+        margin-top: 10px;
+        text-align: center;
+    }
+    .pdfContent{
+        margin-top: 50px;
+        .headings{
+            font-weight: 600;
+            font-size: 14px;
+            color: #1C174F;
+            margin-top: 30px;
+        }
+        .infoHeader{
+            font-size: 0.8rem;
+            margin: 10px 0;
+        }
+        .pdfFields{
+            border: 0;
+            border-bottom: 1px solid #8D8D8D;
+            font-size: 19px;
+            width: 100%;
+            padding: 10px;
+        }
+        .pdfThing{
+            font-size: 10px;
+            font-weight: 500;
+        }
+        .pdfThings{
+            font-size: 8px;
+        }
+    }
+}
