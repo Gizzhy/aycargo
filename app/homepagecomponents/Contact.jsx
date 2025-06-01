@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-console.log('React version:', React.version);
+console.log("React version:", React.version);
 import { useFormspark } from "@formspark/use-formspark";
 import styles from "./styles/contact.module.scss";
 import location from "../../assets/icons/location.svg";
@@ -12,7 +12,6 @@ import x from "../../assets/icons/x.svg";
 import letter from "../../assets/icons/lettersend.svg";
 import Image from "next/image";
 // import { message } from "antd";
-import { message } from "antd";
 
 const FORMSPARK_FORM_ID = "ltpqB5fry";
 
@@ -32,8 +31,8 @@ const Contact = () => {
     setLoading(true);
     try {
       await submit({ firstname, lastname, phone, email, messages });
-      message.success("Message sent successfully");
-      //   alert("Form submitted");
+      // message.success("Message sent successfully");
+      alert("Message sent successfully");
     } catch (error) {
       console.log(error);
     } finally {
@@ -68,10 +67,10 @@ const Contact = () => {
               </div>
             </div>
             <div>
-              <a href="https://www.instagram.com/ay_cargo?igsh=N29hMHRwenQzZjVy">
+              <a href="https://www.instagram.com/ay_cargo">
                 <Image src={insta} alt="instagram" />
               </a>
-              <a href="https://x.com/aycargo1?s=21">
+              <a href="https://x.com/aycargo1">
                 <Image src={x} alt="twitter" />
               </a>
             </div>

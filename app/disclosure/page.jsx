@@ -62,9 +62,8 @@ const Page = () => {
         useCORS: true,
       });
 
-    //   const imgData = canvas.toDataURL("image/png");
-    const imgData = canvas.toDataURL("image/jpeg", 0.6); // 0.6 = 60% quality
-
+      //   const imgData = canvas.toDataURL("image/png");
+      const imgData = canvas.toDataURL("image/jpeg", 0.6); // 0.6 = 60% quality
 
       const pdf = new jsPDF("p", "pt", "a4");
       const pageHeight = pdf.internal.pageSize.getHeight();
@@ -78,9 +77,17 @@ const Page = () => {
       let position = 0;
 
       // First page
-    //   pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-    pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, 'FAST');
-
+      //   pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+      pdf.addImage(
+        imgData,
+        "JPEG",
+        0,
+        position,
+        imgWidth,
+        imgHeight,
+        undefined,
+        "FAST"
+      );
 
       heightLeft -= pageHeight;
 
@@ -163,59 +170,6 @@ const Page = () => {
         </form>
 
         {/* Hidden styled container for PDF capture */}
-        {/* <div
-          id="pdf-content"
-          style={{
-            // position: "absolute",
-            // top: "-9999px",
-            // left: "-9999px",
-            padding: "20px",
-            width: "595px",
-            // fontFamily: "Arial",
-            background: "#fff",
-          }}
-        >
-          <h1 style={{ textAlign: "center" }}>
-            Cargo Business Disclosure Form
-          </h1>
-
-          <h3>1. CUSTOMER INFORMATION</h3>
-          <p>
-            <strong>Full Name:</strong> {formData.fullName}
-          </p>
-          <p>
-            <strong>Phone Number:</strong> {formData.phone}
-          </p>
-          <p>
-            <strong>Email:</strong> {formData.email}
-          </p>
-          <p>
-            <strong>Pickup Address:</strong> {formData.pickupAddress}
-          </p>
-          <p>
-            <strong>Delivery Address:</strong> {formData.deliveryAddress}
-          </p>
-
-          <h3>2. CARGO DETAILS</h3>
-          <p>
-            <strong>Type:</strong> {formData.cargoType}
-          </p>
-          <p>
-            <strong>Weight:</strong> {formData.weight}
-          </p>
-          <p>
-            <strong>Items:</strong> {formData.items}
-          </p>
-          <p>
-            <strong>Value:</strong> {formData.value}
-          </p>
-          <p>
-            <strong>Packaging:</strong> {formData.packaging}
-          </p>
-
-          <h3>3. SIGNATURE</h3>
-          <div id="signature-placeholder"></div>
-        </div> */}
         <div
           id="pdf-content"
           style={{
@@ -235,32 +189,66 @@ const Page = () => {
           <div className={styles.pdfContent}>
             <p className={styles.headings}>1. CUSTOMER INFORMATION</p>
             <p className={styles.infoHeader}>Full Name</p>
-            <input className={styles.pdfFields} value={formData.fullName} />
+            <input
+              className={styles.pdfFields}
+              value={formData.fullName}
+              readOnly
+            />
             <p className={styles.infoHeader}>Phone Number</p>
-            <input className={styles.pdfFields} value={formData.phone} />
+            <input
+              className={styles.pdfFields}
+              value={formData.phone}
+              readOnly
+            />
             <p className={styles.infoHeader}>Email</p>
-            <input className={styles.pdfFields} value={formData.email} />
+            <input
+              className={styles.pdfFields}
+              value={formData.email}
+              readOnly
+            />
             <p className={styles.infoHeader}>Pickup Address</p>
             <input
               className={styles.pdfFields}
               value={formData.pickupAddress}
+              readOnly
             />
             <p className={styles.infoHeader}>Delivery Address</p>
             <input
               className={styles.pdfFields}
               value={formData.deliveryAddress}
+              readOnly
             />
             <p className={styles.headings}>2. CARGO DETAILS</p>
             <p className={styles.infoHeader}>Type of Cargo</p>
-            <input className={styles.pdfFields} value={formData.cargoType} />
+            <input
+              className={styles.pdfFields}
+              value={formData.cargoType}
+              readOnly
+            />
             <p className={styles.infoHeader}>Weight of Goods</p>
-            <input className={styles.pdfFields} value={formData.weight} />
+            <input
+              className={styles.pdfFields}
+              value={formData.weight}
+              readOnly
+            />
             <p className={styles.infoHeader}>List of Items</p>
-            <input className={styles.pdfFields} value={formData.items} />
+            <input
+              className={styles.pdfFields}
+              value={formData.items}
+              readOnly
+            />
             <p className={styles.infoHeader}>Value of Goods</p>
-            <input className={styles.pdfFields} value={formData.value} />
+            <input
+              className={styles.pdfFields}
+              value={formData.value}
+              readOnly
+            />
             <p className={styles.infoHeader}>Packaging Description</p>
-            <input className={styles.pdfFields} value={formData.packaging} />
+            <input
+              className={styles.pdfFields}
+              value={formData.packaging}
+              readOnly
+            />
             <p className={styles.headings}>3. TERMS AND CONDITIONS</p>
             <ul>
               <li className={styles.pdfThing}>Disclosure of Contents</li>
@@ -324,7 +312,11 @@ const Page = () => {
             >
               Date
             </p>
-            <input value={formattedDate} className={styles.pdfFields} />
+            <input
+              value={formattedDate}
+              className={styles.pdfFields}
+              readOnly
+            />
           </div>
         </div>
       </div>

@@ -1,7 +1,25 @@
+@import "include-media";
+
+
+$breakpoints: (
+  smphone: 380px,
+  phone: 480px,
+  surfaceDuo: 540px,
+  tablet: 768px,
+  tabletTwo: 880px,
+  desktop: 1024px,
+  LGDesktop: 1920px,
+);
 .footer{
     padding: 10vh 5vw;
     background-color: #1C174F;
     color: white;
+    @include media("<=phone") {
+        padding: 25px 20px;
+    }
+    @include media("<=smphone") {
+        padding: 20px 15px;
+    }
     >img:nth-of-type(1) {
         display: block;
         margin: 0 auto;
@@ -17,26 +35,56 @@
         display: flex;
         justify-content: space-between;
         margin-top: 25px;
+        @include media("<=phone") {
+            flex-wrap: wrap;
+            // gap: 20px;
+        }
         >div{
             display: flex;
             flex-direction: column;
             gap: 20px;
+            @include media("<=phone") {
+                flex: 0 0 48%;
+                margin-bottom: 40px;
+            }
             >p:nth-of-type(1){
                 font-weight: 500;
                 font-size:0.85rem;
+                @include media("<=phone") {
+                    font-size:1.3rem;
+                }
+                @include media("<=smphone") {
+                    font-size:1rem;
+                }
             }
             >div{
                 display: flex;
                 gap: 10px;
                 >span{
                     font-size: 0.75rem;
+                    @include media("<=phone") {
+                        font-size:1rem;
+                    }
+                    @include media("<=smphone") {
+                        font-size:0.85rem;
+                    }
                 }
             }
             >a{
                 font-size: 0.75rem;
+                @include media("<=phone") {
+                    font-size:1rem;
+                }
+                @include media("<=smphone") {
+                    font-size:0.85rem;
+                }
             }
         }
         >div:nth-of-type(5){
+            @include media("<=phone") {
+                flex: 0 0 100%;
+                width: 100%;
+            }
             >div{
                 background-color: #2C2D5B;
                 border-radius: 10px;
@@ -47,6 +95,10 @@
                 gap: 10px;
                 flex-direction: column;
                 padding: 5px 15px;
+                @include media("<=phone") {
+                    height: 20vh;
+                    width: 100%;
+                }
                 >p:nth-of-type(1){
                     font-weight: 500;
                 }
@@ -54,6 +106,12 @@
                     font-weight: 500;
                     font-size: 0.75rem;
                     color: #ffffff80;
+                    @include media("<=phone") {
+                    font-size: 0.85rem;
+                    }
+                    @include media("<=smphone") {
+                        font-size:0.75rem;
+                    }
                 }
                 >div{
                     display: flex;
@@ -65,6 +123,10 @@
                         color: white;
                         border: 0;
                         border-radius: 7px 0 0 7px;
+                        @include media("<=phone") {
+                        height: 5.5vh;
+                            width: 65%;
+                        }
                     }
                     >input::placeholder{
                         padding: 0 15px;
@@ -77,6 +139,10 @@
                         cursor: pointer;
                         height: 6.5vh;
                         width: 8vw;
+                        @include media("<=phone") {
+                            width: 25vw;
+                        height: 5.5vh;
+                        }
                     }
                     >button:hover{
                         background-color: #e26d1e;

@@ -1,10 +1,20 @@
+@import "include-media";
+
+
+$breakpoints: (
+  smphone: 380px,
+  phone: 480px,
+  surfaceDuo: 540px,
+  tablet: 768px,
+  tabletTwo: 880px,
+  desktop: 1024px,
+  LGDesktop: 1920px,
+);
+
 .container {
     max-width: 700px;
     margin: 0 auto;
     padding: 2rem;
-    // background: #fafafa;
-    // border-radius: 8px;
-    // border: 1px solid #ddd;
   }
   
   .title {
@@ -13,7 +23,6 @@
     margin-bottom: 1.5rem;
     text-align: center;
     color: #1C174F;
-
   }
   
   .form {
@@ -51,6 +60,10 @@
   .signatureCanvas {
     border: 1px solid #ccc;
     border-radius: 5px;
+    @include media("<=phone") {
+      height: 15vh;
+      width: 100%;
+  }
   }
   
   .clearBtn {

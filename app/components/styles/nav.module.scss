@@ -1,3 +1,16 @@
+@import "include-media";
+
+
+$breakpoints: (
+  smphone: 380px,
+  phone: 480px,
+  surfaceDuo: 540px,
+  tablet: 768px,
+  tabletTwo: 880px,
+  desktop: 1024px,
+  LGDesktop: 1920px,
+);
+
 .navbar{
     height: 13vh;
     background-color: white;
@@ -6,6 +19,9 @@
     align-items: center;
     padding: 0 5vw;
     border-bottom: 1px #DDE1E6 solid;
+    @include media("<=phone") {
+        display: none;
+    }
     >div:nth-of-type(1){
         display: flex;
         gap: 20px;
