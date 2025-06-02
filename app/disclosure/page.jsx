@@ -12,6 +12,7 @@ import Image from "next/image";
 
 const Page = () => {
   const [isGenerating, setIsGenerating] = useState(false);
+  const [pdfUrl, setPdfUrl] = useState(null);
   const sigPadRef = useRef(null);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -57,8 +58,9 @@ const Page = () => {
       }
 
       const pdfContainer = document.getElementById("pdf-content");
+      const scale = window.innerWidth <= 768 ? 2 : 3;
       const canvas = await html2canvas(pdfContainer, {
-        scale: 3,
+        scale,
         useCORS: true,
       });
 
@@ -75,9 +77,6 @@ const Page = () => {
 
       let heightLeft = imgHeight;
       let position = 0;
-
-      // First page
-      //   pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
       pdf.addImage(
         imgData,
         "JPEG",
@@ -98,13 +97,56 @@ const Page = () => {
         pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
       }
+      // const isIOS =
+      //   /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-      pdf.save("Cargo_Disclosure_Form.pdf");
+      // const blob = pdf.output("blob");
+      // const blobUrl = URL.createObjectURL(blob);
+
+      // if (isIOS) {
+      //   window.open(blobUrl, "_blank");
+      // } else {
+      //   const link = document.createElement("a");
+      //   link.href = blobUrl;
+      //   link.download = "Cargo_Disclosure_Form.pdf";
+      //   document.body.appendChild(link);
+      //   link.click();
+      //   document.body.removeChild(link);
+      // }
+
+      // setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+      const pdfBlob = pdf.output("blob");
+      const url = URL.createObjectURL(pdfBlob);
+      setPdfUrl(url);
+
+      // pdf.save("Cargo_Disclosure_Form.pdf");
     } catch (err) {
       console.error("PDF generation failed:", err);
       alert("Something went wrong while generating the PDF.");
     } finally {
       setIsGenerating(false);
+    }
+  };
+  const handleDownloadOrOpen = () => {
+    if (!pdfUrl) return;
+
+    const isIOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    if (isIOS) {
+      // On iOS, open in a new tab synchronously on user gesture
+      window.open(pdfUrl, "_blank");
+      alert("PDF opened in new tab. Use the Share button to save or print.");
+    } else {
+      // On desktop and Android, trigger download
+      const link = document.createElement("a");
+      link.href = pdfUrl;
+      link.download = "Cargo_Disclosure_Form.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(pdfUrl);
+      setPdfUrl(null);
     }
   };
 
@@ -115,15 +157,39 @@ const Page = () => {
         <h1 className={styles.title}>Cargo Business Disclosure Form</h1>
         <form className={styles.form}>
           {[
-            { label: "Full Name", name: "fullName" },
-            { label: "Phone Number", name: "phone" },
-            { label: "Email Address", name: "email" },
-            { label: "Pickup Address", name: "pickupAddress" },
-            { label: "Delivery Address", name: "deliveryAddress" },
-            { label: "Type of Cargo", name: "cargoType" },
-            { label: "Weight of Goods", name: "weight" },
-            { label: "List of Items", name: "items" },
-            { label: "Value of Goods", name: "value" },
+            { label: "Full Name", name: "fullName", placeholder: "John Doe" },
+            {
+              label: "Phone Number",
+              name: "phone",
+              placeholder: "+440123456789",
+            },
+            {
+              label: "Email Address",
+              name: "email",
+              placeholder: "hello@example.com",
+            },
+            {
+              label: "Pickup Address",
+              name: "pickupAddress",
+              placeholder: "Bradford, BN1 HAG",
+            },
+            {
+              label: "Delivery Address",
+              name: "deliveryAddress",
+              placeholder: "London, LN1 HYT",
+            },
+            {
+              label: "Type of Cargo",
+              name: "cargoType",
+              placeholder: "Clothings",
+            },
+            { label: "Weight of Goods", name: "weight", placeholder: "25kg" },
+            {
+              label: "List of Items",
+              name: "items",
+              placeholder: "Shirt, gown...",
+            },
+            { label: "Value of Goods", name: "value", placeholder: "$200" },
             { label: "Packaging Description", name: "packaging" },
           ].map((field) => (
             <div className={styles.inputGroup} key={field.name}>
@@ -133,6 +199,8 @@ const Page = () => {
                 name={field.name}
                 value={formData[field.name]}
                 onChange={handleChange}
+                placeholder={field.placeholder}
+                className={styles.inputss}
                 required
               />
             </div>
@@ -157,7 +225,7 @@ const Page = () => {
             </button>
           </div>
           {isGenerating && (
-            <p className={styles.loading}>Generating PDF... Please wait.</p>
+            <p className={styles.loading}>Generating PDF... Please waittt.</p>
           )}
 
           <button
@@ -168,6 +236,17 @@ const Page = () => {
             Generate PDF
           </button>
         </form>
+        {/* Only show download/open button after PDF is ready */}
+        {pdfUrl && (
+          <button
+            onClick={handleDownloadOrOpen}
+            className={styles.downloadButton}
+          >
+            {/iPad|iPhone|iPod/.test(navigator.userAgent)
+              ? "Open PDF"
+              : "Download PDF"}
+          </button>
+        )}
 
         {/* Hidden styled container for PDF capture */}
         <div

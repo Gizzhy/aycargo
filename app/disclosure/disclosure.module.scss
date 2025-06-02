@@ -86,12 +86,37 @@ $breakpoints: (
     cursor: pointer;
     margin-top: 1rem;
     align-self: flex-start;
+    @include media("<=phone") {
+      padding: 2.2vh 10vw;
+      font-size: 1rem;
+  }
   }
   
   .loading {
     color: #555;
     font-style: italic;
     margin-top: 1rem;
+  }
+  .downloadButton{
+    background-color: #1C174F;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 1rem;
+    align-self: flex-start;
+    @include media("<=phone") {
+      padding: 2.2vh 10vw;
+      font-size: 1rem;
+  }
+  }
+  .inputss{
+    @include media("<=phone") {
+     height: 6vh;
+     font-size: 0.95rem;
+  }
   }
   
 
