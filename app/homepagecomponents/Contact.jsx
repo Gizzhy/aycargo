@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-console.log("React version:", React.version);
 import { useFormspark } from "@formspark/use-formspark";
 import styles from "./styles/contact.module.scss";
 import location from "../../assets/icons/location.svg";

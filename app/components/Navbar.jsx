@@ -14,7 +14,9 @@ const Navbar = () => {
           <a href="/#">About us</a>
         </div>
         <div>
-          <button>Request a quote</button>
+          <a href="/quote">
+            <button>Request a quote</button>
+          </a>
         </div>
       </div>
     </>

@@ -1,0 +1,196 @@
+@import "include-media";
+
+
+$breakpoints: (
+  smphone: 380px,
+  phone: 480px,
+  surfaceDuo: 540px,
+  tablet: 768px,
+  tabletTwo: 880px,
+  desktop: 1024px,
+  LGDesktop: 1920px,
+);
+
+.quote{
+    position: relative;
+    
+    >div:nth-of-type(2){
+        display: flex;
+        justify-content: flex-end;
+        >img{
+            height: 400px;
+            width: 700px;
+        }
+    }
+    >div:nth-of-type(3){
+        background-color: #1C174F;
+        display: flex;
+        justify-content: flex-end;
+    }
+    >div:nth-of-type(1){
+        position: absolute;
+        border-radius: 26px;
+        left: 10vw;
+        padding: 5vh 3vw;
+        top: 3%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        background-color: white;
+    z-index: 999;
+        >p{
+            color: #1C174F;
+            font-weight: 600;
+            font-size: 2.5rem;
+        }
+        >form{
+            >div:nth-of-type(1), >div:nth-of-type(6){
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 30px;
+                gap: 20px;
+
+                >div{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    >label{
+                        font-weight: 500;
+                        color: #1C174F;
+                        font-size: 0.85rem;
+                    }
+                    >input{
+                        border: 2px solid #E6E8EC;
+                        border-radius: 12px;
+                        font-size: 0.95rem;
+                        height: 6.5vh;
+                        width: 20vw;
+                        outline: none;
+                        padding-left: 15px;
+                        @include media("<=surfaceDuo") {
+                            width: 38vw;
+                            }
+                        &:focus {
+                            border: 2px solid #1C174F;
+                          }
+                    }
+                    >input::placeholder{
+                        color: #777E90;
+                        font-weight: 500;
+                        font-size: 0.75rem;
+                    }
+                }
+            }
+            >div:nth-of-type(2){
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 30px;
+                gap: 20px;
+
+                >div{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    >label{
+                        font-weight: 500;
+                        color: #1C174F;
+                        font-size: 0.85rem;
+                    }
+                    >input{
+                        border: 2px solid #E6E8EC;
+                        border-radius: 12px;
+                        font-size: 0.95rem;
+                        height: 6.5vh;
+                        width: 20vw;
+                        outline: none;
+                        padding-left: 15px;
+                        @include media("<=surfaceDuo") {
+                            width: 38vw;
+                            }
+                        &:focus {
+                            border: 2px solid #1C174F;
+                          }
+                    }
+                    >input::placeholder{
+                        color: #777E90;
+                        font-weight: 500;
+                        font-size: 0.75rem;
+                    }
+                }
+            }
+            >div:nth-of-type(3), >div:nth-of-type(4), >div:nth-of-type(5), >div:nth-of-type(7){
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 30px;
+                >label{
+                    font-weight: 500;
+                    color: #1C174F;
+                    font-size: 0.85rem;
+                }
+                >input{
+                        border: 2px solid #E6E8EC;
+                        border-radius: 12px;
+                        font-size: 0.95rem;
+                        height: 6.5vh;
+                        // width: 20vw;
+                        outline: none;
+                        padding-left: 15px;
+                        &:focus {
+                            border: 2px solid #1C174F;
+                          }
+                }
+                >input::placeholder{
+                    color: #777E90;
+                        font-weight: 500;
+                        font-size: 0.75rem;
+                }
+            }
+            >div:nth-of-type(8){
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 30px;
+                >label{
+                    font-weight: 500;
+                    color: #1C174F;
+                    font-size: 0.85rem;
+                }
+                >input{
+                    border: 2px solid #E6E8EC;
+                    border-radius: 12px;
+                    font-size: 0.95rem;
+                    height: 20vh;
+                    // width: 20vw;
+                    outline: none;
+                    padding-left: 15px;
+                    &:focus {
+                        border: 2px solid #1C174F;
+                      }
+            }
+            >input::placeholder{
+                color: #777E90;
+                    font-weight: 500;
+                    font-size: 0.75rem;
+            }
+            }
+            >div:nth-of-type(9){
+                display: flex;
+                justify-content: flex-start;
+                >button{
+                    background-color: #F7761F;
+                    border: none;
+                    border-radius: 5px;
+                    font-size: 1rem;
+                    font-weight: 500;
+                    padding: 2vh 5.3vw;
+                    color: white;
+                    cursor: pointer;
+                    margin-top: 40px;
+                    text-align: right;
+                }
+                >button:hover{
+                    background-color: #e26d1e;
+                }
+            }
+        }
+    }
+}
