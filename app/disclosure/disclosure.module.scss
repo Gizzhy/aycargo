@@ -37,15 +37,16 @@ $breakpoints: (
   }
   
   .inputGroup label {
+    color: #1C174F;
     font-weight: 600;
     margin-bottom: 0.3rem;
   }
   
-  .inputGroup input {
-    padding: 0.6rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+  // .inputGroup input {
+  //   padding: 0.6rem;
+  //   border: 1px solid #ccc;
+  //   border-radius: 5px;
+  // }
   
   .signature {
     margin-top: 1rem;
@@ -55,11 +56,13 @@ $breakpoints: (
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
+    color: #1C174F;
+
   }
   
   .signatureCanvas {
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 2px solid #E6E8EC;
+    border-radius: 12px;
     @include media("<=phone") {
       height: 15vh;
       width: 100%;
@@ -70,14 +73,14 @@ $breakpoints: (
     margin-top: 0.4rem;
     background: none;
     border: none;
-    color: #e26d1e;
+    color: #F7761F;
     cursor: pointer;
     font-size: 0.9rem;
     text-decoration: underline;
   }
   
   .submitBtn {
-    background-color: #e26d1e;
+    background-color: #F7761F;
     color: #fff;
     padding: 0.75rem 1.5rem;
     font-weight: bold;
@@ -91,6 +94,9 @@ $breakpoints: (
       font-size: 1rem;
   }
   }
+  .submitBtn:hover{
+    background-color: #e26d1e;
+}
   
   .loading {
     color: #555;
@@ -113,10 +119,18 @@ $breakpoints: (
   }
   }
   .inputss{
+    border: 2px solid #E6E8EC;
+    border-radius: 12px;
+    height: 48px;
+    padding-left: 15px;
+
     @include media("<=phone") {
      height: 6vh;
      font-size: 0.95rem;
   }
+  }
+  .inputss::placeholder{
+    color: #777E90;
   }
   
 
