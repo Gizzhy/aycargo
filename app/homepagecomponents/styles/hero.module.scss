@@ -1,15 +1,35 @@
+@import "include-media";
+
+
+$breakpoints: (
+  smphone: 380px,
+  phone: 480px,
+  surfaceDuo: 540px,
+  tablet: 768px,
+  tabletTwo: 880px,
+  desktop: 1024px,
+  LGDesktop: 1920px,
+);
+
 .hero{
     display: flex;
     justify-content: space-between;
-    // padding: 75px 80px;
     padding: 10vh 5vw;
     background-color: #E8EEFF;
+    @include media("<=surfaceDuo") {
+        flex-direction: column;
+        padding: 7vh 5vw;
+        }
     >div:nth-of-type(1){
         width: 50%;
         display: flex;
         flex-direction: column;
         gap: 50px;
         position: relative;
+        @include media("<=surfaceDuo") {
+            width: 100%;
+            gap: 20px;
+            }
         >img{
             position: absolute;
             height: 80px;
@@ -19,15 +39,26 @@
         >img:nth-of-type(1){
             left: 92%;
             top: -9%;
+            @include media("<=surfaceDuo") {
+                left: 70%;
+                top: -25%;
+                }
         }
         >img:nth-of-type(2){
             left: 27%;
             top: 97%;
+            @include media("<=surfaceDuo") {
+                display: none;
+                }
         }
         >p:nth-of-type(1){
             color: #1C174F;
             font-weight: 700;
             font-size: 2.5rem;
+            @include media("<=surfaceDuo") {
+            font-size: 1.5rem;
+            text-align: center;
+                }
             >span{
                 color: #F7761F;
             }
@@ -36,10 +67,17 @@
             color: #1C174F;
             font-weight: 400;
             font-size: 1rem;
+            @include media("<=surfaceDuo") {
+                font-size: 0.95rem;
+                text-align: justify;
+                    }
         }
         >div{
             display: flex;
             gap: 20px;
+            @include media("<=surfaceDuo") {
+                margin: auto;
+                    }
             >button:nth-of-type(1){
                 color: white;
                 border: 0;
@@ -69,6 +107,12 @@
     >div:nth-of-type(2){
         height: 420px;
         width: 500px;
+        @include media("<=surfaceDuo") {
+            // display: none;
+            width: 100%;
+            height: 300px;
+            margin-top: 10px;
+            }
         >img{
             width: 100%;
             height: 100%;
