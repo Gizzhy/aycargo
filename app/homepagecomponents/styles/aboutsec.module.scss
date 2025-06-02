@@ -1,27 +1,60 @@
+@import "include-media";
+
+
+$breakpoints: (
+  smphone: 380px,
+  phone: 480px,
+  surfaceDuo: 540px,
+  tablet: 768px,
+  tabletTwo: 880px,
+  desktop: 1024px,
+  LGDesktop: 1920px,
+);
+
 .aboutsec{
     padding: 10vh 5vw;
+    @include media("<=tabletTwo") {
+        padding: 5vh 5vw;
+        }
     >p:nth-of-type(1){
         color: #1C174F;
         font-weight: 700;
         font-size: 2rem;
         text-align: center;
+        @include media("<=surfaceDuo") {
+            font-size: 1.5rem;
+            }
     }
     >div:nth-of-type(1){
         display: flex;
         justify-content: space-between;
         align-items: center;
+        @include media("<=surfaceDuo") {
+            flex-direction: column;
+            margin-top: 10px;
+            }
         >div:nth-of-type(1){
             width: 50%;
             display: flex;
             flex-direction: column;
             gap: 50px;
+            @include media("<=surfaceDuo") {
+                width: 100%;
+                }
             >p:nth-of-type(1){
             color: #1C174F;
             font-weight: 700;
             font-size: 1.5rem;
+            @include media("<=surfaceDuo") {
+                font-size: 0.85rem;
+                text-align: center;
+                }
             }
             >p:nth-of-type(2){
                 font-size: 0.75rem;
+                @include media("<=surfaceDuo") {
+                    text-align: justify;
+                    }
             }
             >div:nth-of-type(1){
                 display: flex;
@@ -30,18 +63,45 @@
                     display: flex;
                     align-items: center;
                     gap: 15px;
+                    @include media("<=tabletTwo") {
+                        flex-direction: column;
+                        }
                     >img{
                         height: 55px;
                         width: 55px;
+                        @include media("<=tabletTwo") {
+                            height: 45px;
+                            width: 45px;
+                            }
+                        @include media("<=surfaceDuo") {
+                            height: 40px;
+                            width: 40px;
+                            }
                     }
                     >div{
                         >p:nth-of-type(1){
                             font-weight: 600;
                             color: #1C174F;
                             font-size: 0.85rem;
+                            @include media("<=tabletTwo") {
+                                font-size: 0.8rem;
+                                text-align: center;
+                                }
+                            @include media("<=surfaceDuo") {
+                                font-size: 0.75rem;
+                                text-align: center;
+                                }
                         }
                         >p:nth-of-type(2){
                             font-size: 0.75rem;
+                            @include media("<=tabletTwo") {
+                                font-size: 0.65rem;
+                                text-align: center;
+                                }
+                            @include media("<=surfaceDuo") {
+                                font-size: 0.70rem;
+                                text-align: center;
+                                }
                         }
                     }
                 }
@@ -56,6 +116,16 @@
                 padding: 14px;
                 width: 12vw;
                 cursor: pointer;
+                @include media("<=tabletTwo") {
+                    font-size: 0.85rem;
+                    width: 25vw;
+                    // margin: auto;
+                    }
+                @include media("<=surfaceDuo") {
+                    font-size: 0.85rem;
+                    width: 45vw;
+                    margin: auto;
+                    }
             }
             >button:hover{
                 background-color: #e26d1e;
@@ -63,11 +133,21 @@
         }
         >div:nth-of-type(2){
             height: 420px;
-        width: 500px;
+            width: 500px;
+         @include media("<=surfaceDuo") {
+            display: none;
+
+            width: 100%;
+            height: 300px;
+            margin-top: 10px;
+            }
         >img{
             width: 100%;
             height: 100%;
             object-fit: contain;
+            @include media("<=surfaceDuo") {
+                // width: 80%;
+                }
         }
         }
     }
