@@ -14,7 +14,10 @@ $breakpoints: (
     padding: 10vh 5vw;
     background-color: #1C174F;
     color: white;
-    @include media("<=phone") {
+    @include media("<=tabletTwo") {
+        padding: 6vh 6vw;
+    }
+    @include media("<=surfaceDuo") {
         padding: 25px 20px;
     }
     @include media("<=smphone") {
@@ -35,7 +38,7 @@ $breakpoints: (
         display: flex;
         justify-content: space-between;
         margin-top: 25px;
-        @include media("<=phone") {
+        @include media("<=tabletTwo") {
             flex-wrap: wrap;
             // gap: 20px;
         }
@@ -43,15 +46,18 @@ $breakpoints: (
             display: flex;
             flex-direction: column;
             gap: 20px;
-            @include media("<=phone") {
+            @include media("<=tabletTwo") {
                 flex: 0 0 48%;
                 margin-bottom: 40px;
             }
             >p:nth-of-type(1){
                 font-weight: 500;
                 font-size:0.85rem;
-                @include media("<=phone") {
-                    font-size:1.3rem;
+                @include media("<=tabletTwo") {
+                    font-size:1.6rem;
+                }
+                @include media("<=surfaceDuo") {
+                    font-size:1.2rem;
                 }
                 @include media("<=smphone") {
                     font-size:1rem;
@@ -62,26 +68,32 @@ $breakpoints: (
                 gap: 10px;
                 >span{
                     font-size: 0.75rem;
-                    @include media("<=phone") {
-                        font-size:1rem;
+                    @include media("<=tabletTwo") {
+                        font-size:1.2rem;
+                    }
+                    @include media("<=surfaceDuo") {
+                        font-size:0.9rem;
                     }
                     @include media("<=smphone") {
-                        font-size:0.85rem;
+                        font-size:0.75rem;
                     }
                 }
             }
             >a{
                 font-size: 0.75rem;
-                @include media("<=phone") {
-                    font-size:1rem;
+                @include media("<=tabletTwo") {
+                    font-size:1.2rem;
+                }
+                @include media("<=surfaceDuo") {
+                    font-size:0.9rem;
                 }
                 @include media("<=smphone") {
-                    font-size:0.85rem;
+                    font-size:0.75rem;
                 }
             }
         }
         >div:nth-of-type(5){
-            @include media("<=phone") {
+            @include media("<=tabletTwo") {
                 flex: 0 0 100%;
                 width: 100%;
             }
@@ -95,7 +107,7 @@ $breakpoints: (
                 gap: 10px;
                 flex-direction: column;
                 padding: 5px 15px;
-                @include media("<=phone") {
+                @include media("<=tabletTwo") {
                     height: 20vh;
                     width: 100%;
                 }
@@ -106,7 +118,10 @@ $breakpoints: (
                     font-weight: 500;
                     font-size: 0.75rem;
                     color: #ffffff80;
-                    @include media("<=phone") {
+                    @include media("<=tabletTwo") {
+                        font-size:1.2rem;
+                    }
+                    @include media("<=surfaceDuo") {
                     font-size: 0.85rem;
                     }
                     @include media("<=smphone") {
@@ -123,7 +138,7 @@ $breakpoints: (
                         color: white;
                         border: 0;
                         border-radius: 7px 0 0 7px;
-                        @include media("<=phone") {
+                        @include media("<=tabletTwo") {
                         height: 5.5vh;
                             width: 65%;
                         }
@@ -139,9 +154,9 @@ $breakpoints: (
                         cursor: pointer;
                         height: 6.5vh;
                         width: 8vw;
-                        @include media("<=phone") {
+                        @include media("<=tabletTwo") {
                             width: 25vw;
-                        height: 5.5vh;
+                            height: 5.5vh;
                         }
                     }
                     >button:hover{

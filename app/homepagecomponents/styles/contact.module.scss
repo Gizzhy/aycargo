@@ -1,3 +1,16 @@
+@import "include-media";
+
+
+$breakpoints: (
+  smphone: 380px,
+  phone: 480px,
+  surfaceDuo: 540px,
+  tablet: 768px,
+  tabletTwo: 880px,
+  desktop: 1024px,
+  LGDesktop: 1920px,
+);
+
 .contact{
     padding: 10vh 5vw;
     background-color: #FBFBFB;
@@ -6,6 +19,9 @@
         font-weight: 700;
         font-size: 2rem;
         text-align: center;
+        @include media("<=surfaceDuo") {
+        font-size: 1.5rem;
+        }
     }
     >p:nth-of-type(2){
         color: #717171;
@@ -13,6 +29,9 @@
         text-align: center;
         font-size: 1rem;
         margin-top: 5px;
+        @include media("<=surfaceDuo") {
+            font-size: 0.75rem;
+            }
     }
     >div{
         background-color: white;
@@ -21,6 +40,9 @@
         margin-top: 50px;
         display: flex;
         gap: 40px;
+        @include media("<=surfaceDuo") {
+            flex-direction: column;
+            }
 
         >div:nth-of-type(1){
             background-color: #1C174F;
@@ -31,6 +53,9 @@
             flex-direction: column;
             justify-content: space-between;
             height: 60vh;
+            @include media("<=phone") {
+                height: 47vh;
+                }
             >div:nth-of-type(1){
                 >p:nth-of-type(1){
                     font-weight: 600;
@@ -67,9 +92,20 @@
                 height: 150px;
                 width: 200px;
                 left: 30vw;
+                @include media("<=tabletTwo") {
+                    left: 17vw;
+                    }
+                @include media("<=surfaceDuo") {
+                height: 100px;
+                width: 135px;
+                left: 36vw;
+                }
             }
             >form{
                 width: 50vw;
+                @include media("<=surfaceDuo") {
+                    width: 100%;
+                    }
                 >div:nth-of-type(1){
                     display: flex;
                     justify-content: space-between;
@@ -90,6 +126,9 @@
                             height: 5vh;
                             width: 20vw;
                             outline: none;
+                            @include media("<=surfaceDuo") {
+                                width: 38vw;
+                                }
                             &:focus {
                                 border-bottom: 2px solid #1C174F;
                               }
@@ -121,6 +160,9 @@
                             height: 5vh;
                             width: 20vw;
                             outline: none;
+                            @include media("<=surfaceDuo") {
+                                width: 38vw;
+                                }
                             &:focus {
                                 border-bottom: 2px solid #1C174F;
                               }
