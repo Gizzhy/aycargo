@@ -43,7 +43,9 @@ const AboutSection = () => {
                 </div>
               </div>
             </div>
-            <button>About Us</button>
+            <a href="/about">
+              <button>About Us</button>
+            </a>
           </div>
           <div>
             <Image src={workers} alt="workers" />

@@ -106,30 +106,33 @@ $breakpoints: (
                     }
                 }
             }
-            >button{
-                border: 0;
-                border-radius: 10px;
-                background-color: #F7761F;
-                color: white;
-                font-weight: 500;
-                font-size: 1rem;
-                padding: 14px;
-                width: 12vw;
-                cursor: pointer;
-                @include media("<=tabletTwo") {
-                    font-size: 0.85rem;
-                    width: 25vw;
-                    // margin: auto;
-                    }
-                @include media("<=surfaceDuo") {
-                    font-size: 0.85rem;
-                    width: 45vw;
-                    margin: auto;
-                    }
+            >a{
+                >button{
+                    border: 0;
+                    border-radius: 10px;
+                    background-color: #F7761F;
+                    color: white;
+                    font-weight: 500;
+                    font-size: 1rem;
+                    padding: 14px;
+                    width: 12vw;
+                    cursor: pointer;
+                    @include media("<=tabletTwo") {
+                        font-size: 0.85rem;
+                        width: 25vw;
+                        // margin: auto;
+                        }
+                    @include media("<=surfaceDuo") {
+                        font-size: 0.85rem;
+                        width: 45vw;
+                        margin: auto;
+                        }
+                }
+                >button:hover{
+                    background-color: #e26d1e;
+                }
             }
-            >button:hover{
-                background-color: #e26d1e;
-            }
+            
         }
         >div:nth-of-type(2){
             height: 420px;
