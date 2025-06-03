@@ -40,7 +40,7 @@ const Contact = () => {
   };
   return (
     <>
-      <div className={styles.contact}>
+      <div className={styles.contact} id="contact">
         <p>Contact Us</p>
         <p>Any question or remarks? Just write us a message!</p>
         <div>

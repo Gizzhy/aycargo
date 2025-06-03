@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Hero from "./homepagecomponents/Hero";
 import AboutSection from "./homepagecomponents/AboutSection";
 import Contact from "./homepagecomponents/Contact";
+import Faq from "./components/Faq";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <AboutSection />
       <Contact />
+      <Faq />
       <Footer />
     </div>
   );

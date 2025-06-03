@@ -1,0 +1,91 @@
+@import "include-media";
+
+
+$breakpoints: (
+  smphone: 380px,
+  phone: 480px,
+  surfaceDuo: 540px,
+  tablet: 768px,
+  tabletTwo: 880px,
+  desktop: 1024px,
+  LGDesktop: 1920px,
+);
+
+.faq{
+    padding: 10vh 5vw;
+    display: flex;
+    justify-content: space-between;
+    @include media("<=surfaceDuo") {
+        flex-direction: column;
+        padding: 7vh 5vw;
+        }
+    >div:nth-of-type(1){
+        @include media("<=surfaceDuo") {
+            margin-bottom: 25px;
+            }
+        >img{
+            width: 80%;
+            @include media("<=surfaceDuo") {
+                width: 100%;
+                height: 300px;
+                }
+        }
+    }
+    >div:nth-of-type(2){
+        >p:nth-of-type(1){
+            color: #1C174F;
+            font-weight: 600;
+            font-size: 2rem;
+            @include media("<=surfaceDuo") {
+            font-size: 1.5rem;
+            text-align: center;
+                }
+        }
+        .faqContainer {
+            color: #2f2c4a;
+            border-top: 3px solid #D7DEF0;
+            margin-top: 25px;
+            max-width: 550px;
+          }
+          
+          .faqItem {
+            border-bottom: 3px solid #D7DEF0;
+            padding: 10px 0;
+          }
+          
+          .faqQuestion {
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 15px 0;
+            transition: color 0.3s;
+            >span:nth-of-type(1){
+                color: #1C174F;
+                font-weight: 600;
+                font-size: 1.1rem;
+                @include media("<=surfaceDuo") {
+                font-size: 0.95rem;
+                    }
+            }
+            >span:nth-of-type(2){
+                color: #1A0F91;
+            }
+          }
+          
+          .icon {
+            font-size: 20px;
+          }
+          
+          .faqAnswer {
+            padding: 0 0 15px 0;
+            color: #3C3C43D9;
+            font-size: 0.85rem;
+            word-wrap: break-word;
+            white-space: normal;
+            overflow-wrap: break-word;
+            // width: 50%;
+          }
+          
+        
+    }
+}

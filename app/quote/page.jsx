@@ -8,6 +8,7 @@ import arrow from "../../assets/icons/lettersend.svg";
 import quote from "../../assets/images/quote.svg";
 import Image from "next/image";
 import { useFormspark } from "@formspark/use-formspark";
+import Faq from "../components/Faq";
 const FORMSPARK_FORM_ID = "Dn8OHSGV3";
 
 const page = () => {
@@ -178,6 +179,7 @@ const page = () => {
           <Image src={quote} alt="quote" />
         </div>
       </div>
+      <Faq />
       <Footer />
     </>
   );

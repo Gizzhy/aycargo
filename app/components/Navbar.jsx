@@ -8,10 +8,10 @@ const Navbar = () => {
       <div className={styles.navbar}>
         <Image src={logo} alt="aycargo logo" />
         <div>
-          <a href="/#">Services</a>
-          <a href="/#">Locations</a>
-          <a href="/#">Our Strength</a>
           <a href="/#">About us</a>
+          <a href="/#faq">FAQ</a>
+          <a href="/#contact">Contact us</a>
+          <a href="/#">Our Strength</a>
         </div>
         <div>
           <a href="/quote">
