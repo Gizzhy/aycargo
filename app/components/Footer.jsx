@@ -31,7 +31,7 @@ const Footer = () => {
           <div>
             <p>Company</p>
             <a href="/about">About</a>
-            <a href="/contact">Contact</a>
+            <a href="/#contact">Contact</a>
           </div>
           <div>
             <p>Legal</p>

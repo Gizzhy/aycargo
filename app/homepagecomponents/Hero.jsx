@@ -23,11 +23,16 @@ const Hero = () => {
             delivery.
           </p>
           <div>
-            <button>
-              Price Calculator
-              <Image src={arrow} alt="arrow right" />
-            </button>
-            <button>Contact Us</button>
+            <a href="/price-calculator">
+              <button>
+                Price Calculator
+                <Image src={arrow} alt="arrow right" />
+              </button>
+            </a>
+
+            <a href="/#contact">
+              <button>Contact Us</button>
+            </a>
           </div>
         </div>
         <div>
