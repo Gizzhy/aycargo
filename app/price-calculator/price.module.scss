@@ -1,0 +1,201 @@
+@import "include-media";
+
+
+$breakpoints: (
+  smphone: 380px,
+  phone: 480px,
+  surfaceDuo: 540px,
+  tablet: 768px,
+  tabletTwo: 880px,
+  desktop: 1024px,
+  LGDesktop: 1920px,
+);
+
+.price{
+    // padding: 7vh 5vw;
+    position: relative;
+    >p{
+        color: #1C174F;
+        font-weight: 600;
+        font-size: 2.5rem;
+        margin-left: 10vw;
+        margin-top: 50px;
+        @include media("<=desktop") {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 10px;
+            margin-left: 0;
+            }
+        @include media("<=surfaceDuo") {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            margin-left: 0;
+            }
+    }
+    >div:nth-of-type(1){
+        position: absolute;
+        border-radius: 26px;
+        left: 10vw;
+        padding: 5vh 3vw;
+        top: 20%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        background-color: white;
+        z-index: 999;
+        max-width: 50vw;
+        @include media("<=desktop") {
+            left: 50%;
+            transform: translateX(-50%);
+            top: 10%;
+            max-width: 100vw;
+            }
+        @include media("<=surfaceDuo") {
+            left: 50%;
+            transform: translateX(-50%);
+            top: 10%;
+            max-width: 100vw;
+            }
+
+            >p:nth-of-type(1){
+                color: #F7761F;
+                font-weight: 500;
+                font-size: 1.5rem;
+                margin: 20px 0;
+                @include media("<=surfaceDuo") {
+                    font-size: 1.1rem;
+                    }
+            }
+            >div:nth-of-type(1){
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 30px;
+                gap: 20px;
+
+                >div{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    >label{
+                        font-weight: 500;
+                        color: #1C174F;
+                        font-size: 0.85rem;
+                    }
+                    >select{
+                        border: 2px solid #E6E8EC;
+                        border-radius: 12px;
+                        font-size: 0.95rem;
+                        height: 6.5vh;
+                        width: 20vw;
+                        outline: none;
+                        padding-left: 15px;
+                        background-color: transparent;
+                        color: #1C174F;
+                        @include media("<=desktop") {
+                            width: 30vw;
+                            height: 5vh;
+                            }
+                        @include media("<=surfaceDuo") {
+                            width: 38vw;
+                            height: 5.5vh;
+                            }
+                        &:focus {
+                            border: 2px solid #1C174F;
+                          }
+                    }
+                    >input::placeholder{
+                        color: #777E90;
+                        font-weight: 500;
+                        font-size: 0.75rem;
+                    }
+                }
+            }
+            >div:nth-of-type(2){
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 30px;
+                gap: 20px;
+
+                >div{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    >label{
+                        font-weight: 500;
+                        color: #1C174F;
+                        font-size: 0.85rem;
+                    }
+                    >input{
+                        border: 2px solid #E6E8EC;
+                        border-radius: 12px;
+                        font-size: 0.95rem;
+                        height: 6.5vh;
+                        width: 20vw;
+                        outline: none;
+                        padding-left: 15px;
+                        color: #1C174F;
+                        @include media("<=desktop") {
+                            width: 30vw;
+                            height: 5vh;
+                            }
+                        @include media("<=surfaceDuo") {
+                            width: 38vw;
+                            height: 5.5vh;
+                            }
+                        &:focus {
+                            border: 2px solid #1C174F;
+                          }
+                    }
+                    >input::placeholder{
+                        color: #777E90;
+                        font-weight: 500;
+                        font-size: 0.75rem;
+                    }
+                }
+            }
+        
+    }
+    >div:nth-of-type(2){
+        height: 32vh;
+        @include media("<=surfaceDuo") {
+            height: 20vh;
+            }
+    }
+    >div:nth-of-type(3){
+        background-color: #F3F3F5;
+        display: flex;
+        justify-content: flex-end;
+        height: 43vh;
+        @include media("<=desktop") {
+            height: 30vh;
+            }
+        @include media("<=surfaceDuo") {
+            height: 50vh;
+            }
+    }
+   
+}
+.checkButton{
+    background-color: #1C174F;
+    cursor: pointer;
+    color: white;
+    border: 0;
+    border-radius: 12px;
+    padding: 3vh 7vw;
+    display: block;
+    margin-left: auto;
+    @include media("<=desktop") {
+        padding: 2vh 7vw;
+
+        }
+    @include media("<=surfaceDuo") {
+        padding: 2vh 6vw;
+        }
+
+}
+.note{
+    color: #979797;
+    font-size: 0.6rem;
+    text-align: center;
+    margin-top: 30px;
+    // width: 50%;
+}
