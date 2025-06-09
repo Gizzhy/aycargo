@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./quote.module.scss";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -12,6 +12,9 @@ import Faq from "../components/Faq";
 const FORMSPARK_FORM_ID = "Dn8OHSGV3";
 
 const page = () => {
+  useEffect(() => {
+    document.title = "Get a Quote | AYCARGO";
+  }, []);
   const [submit, submitting] = useFormspark({
     formId: FORMSPARK_FORM_ID,
   });

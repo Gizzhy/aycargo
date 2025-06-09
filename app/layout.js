@@ -8,7 +8,7 @@ const poppins = Poppins({
   display: "swap",
 });
 export const metadata = {
-  title: "AYCARGO",
+  // title: "AYCARGO",
   description: "Seamless Shipping Solutions",
 };
 

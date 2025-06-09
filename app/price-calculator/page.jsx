@@ -1,11 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./price.module.scss";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const page = () => {
+  useEffect(() => {
+    document.title = "Cargo Price Calculator | AYCARGO";
+  }, []);
+
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [weight, setWeight] = useState("");
