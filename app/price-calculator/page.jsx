@@ -36,7 +36,7 @@ const page = () => {
 
     let rate = 0;
     if (from === "nigeria" && to === "uk") {
-      rate = 7000;
+      rate = 9000;
     } else if (from === "uk" && to === "nigeria") {
       rate = 5;
     } else {
