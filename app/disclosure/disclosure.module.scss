@@ -169,6 +169,17 @@ $breakpoints: (
             width: 100%;
             padding: 10px;
         }
+        .pdfFieldss{
+          border: 0;
+          border-bottom: 1px solid #8D8D8D;
+          font-size: 19px;
+          width: 100%;
+          padding: 10px;
+          overflow: hidden;
+          resize: none;
+          min-height: 60px;
+          white-space: pre-wrap; 
+      }
         .pdfThing{
             font-size: 10px;
             font-weight: 500;

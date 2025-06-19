@@ -1,9 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import styles from "./price.module.scss";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import tv from "../../assets/images/tv.svg";
+import box from "../../assets/images/box.svg";
+import bag from "../../assets/images/bag.svg";
 
 const page = () => {
   useEffect(() => {
@@ -13,7 +17,6 @@ const page = () => {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [weight, setWeight] = useState("");
-  //   const [error, setError] = useState("");
   const [estimate, setEstimate] = useState(null);
 
   const handleCalculate = () => {
@@ -110,7 +113,71 @@ const page = () => {
             information you provide. In particular prices might not include
             surcharges and fees.
           </p>
-          {/* {error && <p style={{ color: "red" }}>{error}</p>} */}
+        </div>
+        <div>
+          <p>Sea Freight</p>
+          <div>
+            <div>
+              <Image src={bag} alt="bags and boxes" />
+              <p>Bags, Boxes, Suitcases</p>
+              <p>
+                Small: <span>£60</span>
+              </p>
+              <p>
+                Medium: <span>£80</span>
+              </p>
+              <p>
+                Large: <span>£100</span>
+              </p>
+              <p>
+                Extra Large: <span>£120</span>
+              </p>
+            </div>
+            <div>
+              <Image src={box} alt="bags and boxes" />
+              <p>Fridges, Oven & Washing Machines</p>
+              <p>
+                Standard Size: <span>£120</span>
+              </p>
+              <p>
+                Fridge Freezer: <span>£180</span>
+              </p>
+              <p>
+                American Fridge Freezer: <span>£280</span>
+              </p>
+              <p>
+                Medium/Large Freezer: <span>£200</span>
+              </p>
+            </div>
+          </div>
+          <div>
+            <div>
+              <Image src={tv} alt="bags and boxes" />
+              <p>Television</p>
+              <p>
+                40 - 60 inches: <span>£130</span>
+              </p>
+              <p>
+                47 - 52 inches: <span>£200</span>
+              </p>
+              <p>
+                55 - 62 inches: <span>£200</span>
+              </p>
+              <p>
+                65 + inches: <span>£250</span>
+              </p>
+            </div>
+            <div>
+              <Image src={box} alt="bags and boxes" />
+              <p>Vehicles</p>
+              <p>
+                Cars: <span>£3000</span>
+              </p>
+              <p>
+                MVP: <span>£4000</span>
+              </p>
+            </div>
+          </div>
         </div>
         <div></div>
         <div></div>

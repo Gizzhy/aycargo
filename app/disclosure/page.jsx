@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SignaturePad from "react-signature-canvas";
@@ -32,6 +32,15 @@ const Page = () => {
     month: "long",
     day: "numeric",
   });
+  const itemsRef = useRef(null);
+
+  useEffect(() => {
+    const textarea = itemsRef.current;
+    if (textarea) {
+      textarea.style.height = "auto"; // Reset height
+      textarea.style.height = `${textarea.scrollHeight}px`; // Set to content height
+    }
+  }, [formData.items]); // Re-run when text updates
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -255,9 +264,9 @@ const Page = () => {
             padding: "20px",
             width: "595px",
             background: "#fff",
-            position: "absolute",
-            top: "-9999px",
-            left: "-9999px",
+            // position: "absolute",
+            // top: "-9999px",
+            // left: "-9999px",
           }}
           className={styles.pdfItsel}
         >
@@ -311,10 +320,11 @@ const Page = () => {
               readOnly
             />
             <p className={styles.infoHeader}>List of Items</p>
-            <input
-              className={styles.pdfFields}
+            <textarea
+              className={styles.pdfFieldss}
               value={formData.items}
               readOnly
+              ref={itemsRef}
             />
             <p className={styles.infoHeader}>Value of Goods</p>
             <input
