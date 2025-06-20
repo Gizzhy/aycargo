@@ -121,10 +121,10 @@ const page = () => {
               <Image src={bag} alt="bags and boxes" />
               <p>Bags, Boxes, Suitcases</p>
               <p>
-                Small: <span>£60</span>
+                Small: <span>£65</span>
               </p>
               <p>
-                Medium: <span>£80</span>
+                Medium: <span>£85</span>
               </p>
               <p>
                 Large: <span>£100</span>

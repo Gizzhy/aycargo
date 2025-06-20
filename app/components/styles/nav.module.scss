@@ -22,11 +22,6 @@ $breakpoints: (
     @include media("<=phone") {
         display: none;
     }
-    >a{
-        >img{
-            
-        }
-    }
     >div:nth-of-type(1){
         display: flex;
         gap: 20px;
