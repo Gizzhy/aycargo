@@ -6,8 +6,11 @@ const Navbar = () => {
   return (
     <>
       <div className={styles.navbar}>
-        <Image src={logo} alt="aycargo logo" />
+        <a href="/">
+          <Image src={logo} alt="aycargo logo" />
+        </a>
         <div>
+          <a href="/">Home</a>
           <a href="/about">About us</a>
           <a href="/#faq">FAQ</a>
           <a href="/#contact">Contact us</a>
