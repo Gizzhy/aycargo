@@ -41,7 +41,7 @@ const page = () => {
     if (from === "nigeria" && to === "uk") {
       rate = 9000;
     } else if (from === "uk" && to === "nigeria") {
-      rate = 5;
+      rate = 6;
     } else {
       alert("Invalid route selected.");
       setEstimate(null);
