@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import tv from "../../assets/images/tv.svg";
 import box from "../../assets/images/box.svg";
 import bag from "../../assets/images/bag.svg";
+import cars from "../../assets/images/cars.svg";
 
 const page = () => {
   useEffect(() => {
@@ -168,7 +169,7 @@ const page = () => {
               </p>
             </div>
             <div>
-              <Image src={box} alt="bags and boxes" />
+              <Image src={cars} alt="bags and boxes" />
               <p>Vehicles</p>
               <p>
                 Cars: <span>£3000</span>
