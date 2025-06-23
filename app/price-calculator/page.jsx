@@ -9,6 +9,7 @@ import tv from "../../assets/images/tv.svg";
 import box from "../../assets/images/box.svg";
 import bag from "../../assets/images/bag.svg";
 import cars from "../../assets/images/cars.svg";
+import people from "../../assets/images/priceimg.svg";
 
 const page = () => {
   useEffect(() => {
@@ -178,6 +179,20 @@ const page = () => {
                 MVP: <span>£4000</span>
               </p>
             </div>
+          </div>
+          <div>
+            <div>
+              <p>
+                Prices above are for pick up in our Lagos office. Deliveries
+                within Lagos and other states are charged as extras.
+              </p>
+              <button>Duration: 6 - 7 weeks</button>
+              <p>
+                UK OFFICE NUMBER: <span>07867487444</span>
+              </p>
+              <p>*T&Cs Apply*</p>
+            </div>
+            <Image src={people} alt="aycargo" />
           </div>
         </div>
         <div></div>

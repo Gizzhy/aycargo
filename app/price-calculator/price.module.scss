@@ -173,19 +173,19 @@ $breakpoints: (
         @include media("<=desktop") {
             left: 50%;
             transform: translateX(-50%);
-            top: 40%;
+            top: 38%;
             min-width: 85vw;
             }
             @include media("<=tabletTwo") {
                 left: 50%;
                 transform: translateX(-50%);
-                top: 38%;
+                top: 35%;
                 min-width: 85vw;
                 }
         @include media("<=surfaceDuo") {
             left: 50%;
             transform: translateX(-50%);
-            top: 39%;
+            top: 36%;
             min-width: 90vw;
             }
         >p:nth-of-type(1){
@@ -246,6 +246,115 @@ $breakpoints: (
                 }
             }
         }
+        >div:nth-of-type(3){
+            background-color: #1C174F;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 30px;
+            width: 100%;
+            padding: 0 2vw;
+            @include media("<=surfaceDuo") {
+                border-radius: 20px;
+                }
+                @include media("<=smphone") {
+                    border-radius: 15px;
+                    }
+            >div:nth-of-type(1){
+                padding: 3vh 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 15px;
+                width: 50%;
+                @include media("<=tabletTwo") {
+                    gap: 10px;
+                    width: 60%;
+                    }
+                    @include media("<=smphone") {
+                    gap: 8px;
+                        }
+                >p:nth-of-type(1){
+                    color: white;
+                    font-size: 0.75rem;
+                    @include media("<=tabletTwo") {
+                    font-size: 0.65rem;
+                        }
+                    @include media("<=surfaceDuo") {
+                    font-size: 0.6rem;
+                        }
+                        @include media("<=smphone") {
+                            font-size: 0.5rem;
+                        }
+                }
+                >button{
+                    background-color: #F7761F;
+                    border-radius: 14px;
+                    color: white;
+                    border: 0;
+                    font-weight: 600;
+                    font-size: 0.75rem;
+                    padding: 1.7vh 0;
+                    width: 200px;
+                    @include media("<=tabletTwo") {
+                        font-size: 0.65rem;
+                            }
+                    @include media("<=surfaceDuo") {
+                        font-size: 0.6rem;
+                        width: 120px;
+                        border-radius: 10px;
+                            }
+                            @include media("<=smphone") {
+                                font-size: 0.5rem;
+                                width: 100px;
+                                    }
+                }
+                >p:nth-of-type(2){
+                    color: white;
+                    font-size: 0.75rem;
+                    font-weight: 400;
+                    @include media("<=tabletTwo") {
+                        font-size: 0.65rem;
+                            }
+                    @include media("<=surfaceDuo") {
+                        font-size: 0.6rem;
+                            }
+                    @include media("<=smphone") {
+                        font-size: 0.5rem;
+                                    }
+                    >span{
+                        font-weight: 600;
+                    }
+                }
+                >p:nth-of-type(3){
+                    color: #F7761F;
+                    font-size: 0.75rem;
+                    font-weight: 400;
+                    @include media("<=tabletTwo") {
+                        font-size: 0.65rem;
+                            }
+                    @include media("<=surfaceDuo") {
+                        font-size: 0.5rem;
+                            }
+                }
+            }
+            >img{
+                height: 200px;
+                width: 200px;
+                margin: auto 0;
+                @include media("<=tabletTwo") {
+                    height: 180px;
+                    width: 180px;
+                        }
+                @include media("<=surfaceDuo") {
+                    height: 150px;
+                    width: 150px;
+                    }
+                    @include media("<=smphone") {
+                        height: 100px;
+                        width: 100px;
+                        }
+                    }
+        }
     }
     >div:nth-of-type(3){
         height: 35vh;
@@ -259,13 +368,13 @@ $breakpoints: (
         justify-content: flex-end;
         height: 240vh;
         @include media("<=desktop") {
-            height: 120vh;
-            }
-        @include media("<=surfaceDuo") {
             height: 155vh;
             }
+        @include media("<=surfaceDuo") {
+            height: 167vh;
+            }
             @include media("<=smphone") {
-                height: 205vh;
+                height: 217vh;
                 }
     }
 }
