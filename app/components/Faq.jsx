@@ -8,14 +8,13 @@ import Image from "next/image";
 const Faq = () => {
   const faqData = [
     {
-      question: "What services does AYCargo provide?",
-      answer:
-        "AYCargo offers a variety of logistics and shipping services including: Air freight, Sea freight, Road freight, General logistics,Door-to-door delivery services",
+      question: "Do you pick up from car parks?",
+      answer: "Yes we do",
     },
     {
-      question: "What types of items can I ship with AYCargo?",
+      question: "Any Hidden charges?",
       answer:
-        "You can ship a wide range of goods including: Clothing, Food items, Cars and other vehicles, Electronics, Furniture, Machinery, Equipment",
+        "There are no hidden charges, we clearly state our fees before shipping.",
     },
     {
       question: "Which countries does AYCargo operate in?",
@@ -23,14 +22,19 @@ const Faq = () => {
         "AYCargo ships: From Nigeria to the UK, From the UK to Nigeria, From the UK to other African countries",
     },
     {
+      question:
+        "I don't have packaging materials but I need to cargo kindly advise.",
+      answer:
+        "We will supply all packaging materials needed to protect your goods.",
+    },
+    {
       question: "How fast and reliable is AYCargo's service?",
       answer:
         "AYCargo promotes its services as safe and fast, ensuring reliable logistics solutions for personal and commercial needs.",
     },
     {
-      question: "What is AYCargo's motto?",
-      answer:
-        "Seamless Shipping Solutions - reflecting a commitment to hassle-free logistics and customer satisfaction.",
+      question: "How fast and Reliable is Ay cargo operate in?",
+      answer: "Within 7 working days you will get your shipments.",
     },
     {
       question: "Can AYCargo handle both personal and commercial shipments?",
