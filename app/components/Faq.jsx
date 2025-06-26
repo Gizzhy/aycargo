@@ -33,10 +33,6 @@ const Faq = () => {
         "AYCargo promotes its services as safe and fast, ensuring reliable logistics solutions for personal and commercial needs.",
     },
     {
-      question: "How fast and Reliable is Ay cargo operate in?",
-      answer: "Within 7 working days you will get your shipments.",
-    },
-    {
       question: "Can AYCargo handle both personal and commercial shipments?",
       answer:
         "Yes, AYCargo handles a wide range of consignments, suitable for both personal and business logistics needs.",
