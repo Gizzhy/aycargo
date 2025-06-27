@@ -9,6 +9,8 @@ import home from "../../assets/icons/home.svg";
 import document from "../../assets/icons/document.svg";
 import comments from "../../assets/icons/comments.svg";
 import user from "../../assets/icons/user.svg";
+import close from "../../assets/icons/close.svg";
+
 // import { IoCloseOutline } from "react-icons/io5";
 import navopen from "../../assets/icons/navopen.svg";
 
@@ -51,9 +53,9 @@ const Navbar = () => {
             <div>
               <ul className={`${menuOpen ? styles.open : ""}`}>
                 <div>
-                  <p>Menu</p>
+                  {/* <p>Menu</p> */}
                   <div className={styles.toggle} onClick={toggleMenu}>
-                    x{/* <IoCloseOutline fontSize={35} fontWeight={700} /> */}
+                    <Image src={close} alt="close icon" className={styles.closeIcon} />
                   </div>
                 </div>
 
@@ -65,7 +67,6 @@ const Navbar = () => {
                     </Link>
                   </li>
                 ))}
-                {/* <button>Logout</button> */}
               </ul>
 
               <div className={styles.toggle} onClick={toggleMenu}>
