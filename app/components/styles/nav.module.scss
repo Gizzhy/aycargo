@@ -10,6 +10,8 @@ $breakpoints: (
   desktop: 1024px,
   LGDesktop: 1920px,
 );
+$black: #191B1F;
+
 
 .navbar{
     height: 13vh;
@@ -49,4 +51,108 @@ $breakpoints: (
         }
         
     }
+}
+
+// mobile navbar
+.navThings{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    >img{
+        height: 30px;
+        width: 30px;
+    }
+}
+.navvv{
+    color: #0F0F0F;
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+.mobileNavbar{
+    height: 10vh;
+    padding: 15px;
+    >div{
+      display: flex;
+      flex-direction: column;
+      >div:nth-of-type(1){
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        >img{
+          width: 30%;
+        }
+        ul{
+          display: none;
+          position: fixed;
+          list-style: none;
+          top: -18px;
+          right: -5px;
+          width: 85vw;
+          height: 100vh;
+          background: white;
+          flex-direction: column;
+          box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+          gap: 45px;
+          z-index: 1;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease-in-out;
+          margin: 0;
+          padding: 30px 0 10px 30px;
+          @include media("<=tabletTwo") {
+            height: 25vh;
+            width: 30vw;
+        }
+          @include media("<=phone") {
+            height: 110vh;
+            width: 85vw;
+        }
+        @include media("<=smphone") {
+            height: 110vh;
+            width: 85vw;
+        }
+          >div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            >p{
+                font-size: 18px;
+                font-weight: 600;
+                color: $black;
+                @include media("<=smphone") {
+                    font-size: 13px;
+                }
+            }
+            
+          }
+          li {
+            font-size: 16px;
+            font-weight: 400;
+            color: $black;
+            cursor: pointer;
+            @include media("<=smphone") {
+                font-size: 13px;
+            }
+          }
+        }
+        .open {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+            z-index: 1;
+
+        }
+        .toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            width: 50px;
+            cursor: pointer;
+        }
+      }
+    }
+@include media(">tabletTwo") {
+    display: none;
+}
 }
