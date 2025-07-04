@@ -13,7 +13,7 @@ $breakpoints: (
 
 .upNav{
     @include media("<=tabletTwo") {
-        margin-top: 10.5vh;
+        margin-top: 10vh;
     }
     @include media("<=smphone") {
         margin-top: 17vh;
