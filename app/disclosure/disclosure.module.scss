@@ -15,6 +15,12 @@ $breakpoints: (
     max-width: 700px;
     margin: 0 auto;
     padding: 2rem;
+    @include media("<=tabletTwo") {
+      margin-top: 10.5vh;
+  }
+  @include media("<=smphone") {
+      margin-top: 17vh;
+  }
   }
   
   .title {

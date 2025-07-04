@@ -14,6 +14,12 @@ $breakpoints: (
 .price{
     // padding: 7vh 5vw;
     position: relative;
+    @include media("<=tabletTwo") {
+        margin-top: 10.5vh;
+    }
+    @include media("<=smphone") {
+        margin-top: 17vh;
+    }
     >p{
         color: #1C174F;
         font-weight: 600;

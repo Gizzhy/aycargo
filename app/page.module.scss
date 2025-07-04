@@ -1,0 +1,21 @@
+@import "include-media";
+
+
+$breakpoints: (
+  smphone: 380px,
+  phone: 480px,
+  surfaceDuo: 540px,
+  tablet: 768px,
+  tabletTwo: 880px,
+  desktop: 1024px,
+  LGDesktop: 1920px,
+);
+
+.upNav{
+    @include media("<=tabletTwo") {
+        margin-top: 10.5vh;
+    }
+    @include media("<=smphone") {
+        margin-top: 17vh;
+    }
+}

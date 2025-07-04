@@ -16,11 +16,13 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <Navbar />
-      <Hero />
-      <AboutSection />
-      <Contact />
-      <Faq />
-      <Footer />
+      <div className={styles.upNav}>
+        <Hero />
+        <AboutSection />
+        <Contact />
+        <Faq />
+        <Footer />
+      </div>
     </div>
   );
 }

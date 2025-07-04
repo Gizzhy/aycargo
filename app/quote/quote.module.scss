@@ -13,7 +13,12 @@ $breakpoints: (
 
 .quote{
     position: relative;
-    
+    @include media("<=tabletTwo") {
+        margin-top: 10.5vh;
+    }
+    @include media("<=smphone") {
+        margin-top: 17vh;
+    }
     >div:nth-of-type(2){
         display: flex;
         justify-content: flex-end;

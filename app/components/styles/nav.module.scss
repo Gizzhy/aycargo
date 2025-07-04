@@ -21,7 +21,7 @@ $black: #191B1F;
     align-items: center;
     padding: 0 5vw;
     border-bottom: 1px #DDE1E6 solid;
-    @include media("<=phone") {
+    @include media("<=tabletTwo") {
         display: none;
     }
     >div:nth-of-type(1){
@@ -71,6 +71,13 @@ $black: #191B1F;
 .mobileNavbar{
     height: 10vh;
     padding: 15px;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 999999999;
+    margin-bottom: 11vh;
     >div{
       display: flex;
       flex-direction: column;
@@ -100,8 +107,8 @@ $black: #191B1F;
           margin: 0;
           padding: 30px 0 10px 30px;
           @include media("<=tabletTwo") {
-            height: 25vh;
-            width: 30vw;
+            height: 110vh;
+            width: 85vw;
         }
           @include media("<=phone") {
             height: 110vh;
