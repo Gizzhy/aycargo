@@ -17,7 +17,7 @@ $breakpoints: (
         margin-top: 10vh;
     }
     @include media("<=smphone") {
-        margin-top: 17vh;
+        margin-top: 12vh;
     }
     >div:nth-of-type(2){
         display: flex;

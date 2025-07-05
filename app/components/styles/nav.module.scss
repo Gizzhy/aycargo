@@ -79,6 +79,9 @@ $black: #191B1F;
     z-index: 999999999;
     margin-bottom: 11vh;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    @include media("<=smphone") {
+        height: 12vh;
+    }
     >div{
       display: flex;
       flex-direction: column;
@@ -131,8 +134,8 @@ $black: #191B1F;
             //     }
             // }
             .closeIcon{
-                width: 20px;
-                height: 20px;
+                width: 40px;
+                height: 40px;
                 margin-right: 30px;
             }
           }

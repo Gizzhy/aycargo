@@ -9,7 +9,7 @@ import home from "../../assets/icons/home.svg";
 import document from "../../assets/icons/document.svg";
 import comments from "../../assets/icons/comments.svg";
 import user from "../../assets/icons/user.svg";
-import close from "../../assets/icons/close.svg";
+import close from "../../assets/icons/xx.svg";
 
 // import { IoCloseOutline } from "react-icons/io5";
 import navopen from "../../assets/icons/navopen.svg";
