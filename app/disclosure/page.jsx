@@ -212,24 +212,35 @@ const Page = () => {
 
     drawText("Customer Signature:", { size: 10 });
 
-    if (!sigPadRef.current.isEmpty()) {
+    if (sigPadRef.current && !sigPadRef.current.isEmpty()) {
       const signatureDataUrl = sigPadRef.current
         .getTrimmedCanvas()
         .toDataURL("image/png");
+
       const signatureBytes = await fetch(signatureDataUrl).then((res) =>
         res.arrayBuffer()
       );
+
       const signatureImage = await pdfDoc.embedPng(signatureBytes);
       const pngDims = signatureImage.scale(0.5);
+
       page.drawImage(signatureImage, {
         x: 50,
         y: y - pngDims.height - 5,
         width: pngDims.width,
         height: pngDims.height,
       });
+
       y -= pngDims.height + 20;
     } else {
-      drawText("[No signature provided]", { size: 10, color: rgb(1, 0, 0) });
+      drawText("[No signature provided]", {
+        x: 50,
+        y: y - 20,
+        size: 10,
+        color: rgb(1, 0, 0),
+      });
+
+      y -= 40;
     }
 
     drawText(`Date: ${formattedDate}`, { size: 10 });
