@@ -1,19 +1,18 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SignaturePad from "react-signature-canvas";
-import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
+import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
+import { saveAs } from "file-saver";
 import styles from "./disclosure.module.scss";
-import logo from "../../assets/images/logo.svg";
-import Image from "next/image";
+// import logo from "../../assets/images/logo.svg";
+// import Image from "next/image";
 
 const Page = () => {
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [pdfUrl, setPdfUrl] = useState(null);
-  const sigPadRef = useRef(null);
+  const sigPadRef = useRef();
+
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -26,137 +25,218 @@ const Page = () => {
     value: "",
     packaging: "",
   });
+
   const today = new Date();
   const formattedDate = today.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
-  const itemsRef = useRef(null);
-
-  useEffect(() => {
-    const textarea = itemsRef.current;
-    if (textarea) {
-      textarea.style.height = "auto"; // Reset height
-      textarea.style.height = `${textarea.scrollHeight}px`; // Set to content height
-    }
-  }, [formData.items]); // Re-run when text updates
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const clearSignature = () => sigPadRef.current.clear();
+  const clearSignature = () => {
+    sigPadRef.current?.clear();
+  };
 
   const generatePDF = async () => {
-    if (!sigPadRef.current || sigPadRef.current.isEmpty()) {
-      alert("Please provide a signature before generating the PDF.");
-      return;
-    }
+    const pdfDoc = await PDFDocument.create();
+    let page = pdfDoc.addPage([595, 842]); // A4
+    // shift text position down below the logo
 
-    setIsGenerating(true);
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const { width, height } = page.getSize();
 
-    try {
-      const sigImageUrl = sigPadRef.current.toDataURL("image/png");
+    let y = height - 50;
 
-      const signaturePlaceholder = document.getElementById(
-        "signature-placeholder"
-      );
-      if (signaturePlaceholder) {
-        signaturePlaceholder.innerHTML = `<img src="${sigImageUrl}" style="width: 200px; border: 1px solid #000;" alt="Signature"/>`;
-      }
+    const logoUrl = "/logo.png"; // path from public folder
+    const logoImageBytes = await fetch(logoUrl).then((res) =>
+      res.arrayBuffer()
+    );
+    const logoImage = await pdfDoc.embedPng(logoImageBytes); // or embedJpg if JPG
+    const logoDims = logoImage.scale(0.55); // Adjust scale as needed
 
-      const pdfContainer = document.getElementById("pdf-content");
-      const scale = window.innerWidth <= 768 ? 2 : 3;
-      const canvas = await html2canvas(pdfContainer, {
-        scale,
-        useCORS: true,
+    page.drawImage(logoImage, {
+      x: 40, // horizontal position
+      y: height - 50, // vertical position from top
+      width: logoDims.width,
+      height: logoDims.height,
+    });
+
+    y -= logoDims.height + 10;
+    const drawText = (text, opts = {}) => {
+      const {
+        x = 50,
+        y: customY,
+        size = 12,
+        color = rgb(0, 0, 0),
+        font: customFont = font,
+      } = opts;
+
+      const drawY = customY ?? y;
+
+      page.drawText(text, {
+        x,
+        y: drawY,
+        size,
+        font: customFont,
+        color,
       });
 
-      //   const imgData = canvas.toDataURL("image/png");
-      const imgData = canvas.toDataURL("image/jpeg", 0.6); // 0.6 = 60% quality
+      y = drawY - size - 4; // Update y for the next line (basic line height)
+    };
 
-      const pdf = new jsPDF("p", "pt", "a4");
-      const pageHeight = pdf.internal.pageSize.getHeight();
-      const pageWidth = pdf.internal.pageSize.getWidth();
+    const wrapText = (text, maxWidth, font, size) => {
+      const words = text.split(" ");
+      const lines = [];
+      let line = "";
 
-      const imgProps = pdf.getImageProperties(imgData);
-      const imgWidth = pageWidth;
-      const imgHeight = (imgProps.height * imgWidth) / imgProps.width;
-
-      let heightLeft = imgHeight;
-      let position = 0;
-      pdf.addImage(
-        imgData,
-        "JPEG",
-        0,
-        position,
-        imgWidth,
-        imgHeight,
-        undefined,
-        "FAST"
-      );
-
-      heightLeft -= pageHeight;
-
-      // Additional pages
-      while (heightLeft > 0) {
-        position -= pageHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
+      for (const word of words) {
+        const testLine = line + word + " ";
+        const testWidth = font.widthOfTextAtSize(testLine, size);
+        if (testWidth > maxWidth) {
+          lines.push(line.trim());
+          line = word + " ";
+        } else {
+          line = testLine;
+        }
       }
-      // const isIOS =
-      //   /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-      // const blob = pdf.output("blob");
-      // const blobUrl = URL.createObjectURL(blob);
+      if (line.trim()) lines.push(line.trim());
+      return lines;
+    };
 
-      // if (isIOS) {
-      //   window.open(blobUrl, "_blank");
-      // } else {
-      //   const link = document.createElement("a");
-      //   link.href = blobUrl;
-      //   link.download = "Cargo_Disclosure_Form.pdf";
-      //   document.body.appendChild(link);
-      //   link.click();
-      //   document.body.removeChild(link);
-      // }
+    const drawWrappedText = (text, opts = {}) => {
+      const {
+        x = 50,
+        maxWidth = width - x * 2,
+        size = 12,
+        color = rgb(0, 0, 0),
+        lineHeight = size + 4,
+      } = opts;
 
-      // setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
-      const pdfBlob = pdf.output("blob");
-      const url = URL.createObjectURL(pdfBlob);
-      setPdfUrl(url);
+      const lines = wrapText(text, maxWidth, font, size);
 
-      // pdf.save("Cargo_Disclosure_Form.pdf");
-    } catch (err) {
-      console.error("PDF generation failed:", err);
-      alert("Something went wrong while generating the PDF.");
-    } finally {
-      setIsGenerating(false);
+      for (const line of lines) {
+        page.drawText(line, { x, y, size, font, color });
+        y -= lineHeight;
+
+        if (y < 60) {
+          page = pdfDoc.addPage([595, 842]);
+          y = height - 50;
+        }
+      }
+    };
+
+    // Start writing PDF content
+    drawText("Cargo Business Disclosure Form", {
+      x: 150,
+      size: 14,
+      color: rgb(0.1, 0.1, 0.4),
+    });
+
+    drawText("1. CUSTOMER INFORMATION", {
+      size: 12,
+      color: rgb(0.2, 0.2, 0.5),
+    });
+    drawText(`Full Name: ${formData.fullName}`);
+    drawText(`Phone Number: ${formData.phone}`);
+    drawText(`Email: ${formData.email}`);
+    drawText(`Pickup Address: ${formData.pickupAddress}`);
+    drawText(`Delivery Address: ${formData.deliveryAddress}`);
+
+    drawText("2. CARGO DETAILS", { size: 12, color: rgb(0.2, 0.2, 0.5) });
+    drawText(`Type of Cargo: ${formData.cargoType}`);
+    drawText(`Weight of Goods: ${formData.weight}`);
+    drawText(`List of Items:`, { size: 12 });
+    drawWrappedText(formData.items, {
+      size: 9,
+      lineHeight: 13,
+    });
+
+    drawText(`Value of Goods: ${formData.value}`);
+    drawText(`Packaging Description: ${formData.packaging}`);
+
+    drawText("3. TERMS AND CONDITIONS", {
+      size: 12,
+      color: rgb(0.2, 0.2, 0.5),
+    });
+
+    const terms = [
+      {
+        title: "Disclosure of Contents",
+        body: "The customer affirms that the cargo contents are accurately described and do not contain any prohibited, illegal, or hazardous materials.",
+      },
+      {
+        title: "Liability",
+        body: "AYCARGO is not liable for loss, damage, or delay caused by force majeure, customs inspections, or improperly packaged goods. Liability for loss or damage is limited to the declared value unless additional insurance is purchased.",
+      },
+      {
+        title: "Insurance",
+        body: "Additional cargo insurance is available upon request at an extra cost. If declined, the customer accepts the risk associated with the shipment.",
+      },
+      {
+        title: "Delivery Timeframes",
+        body: "Estimated delivery times are not guaranteed. Delays may occur due to customs clearance, transportation, or other external factors.",
+      },
+      {
+        title: "Compliance with Laws",
+        body: "The customer confirms that all cargo complies with international shipping laws and regulations, including but not limited to customs documentation and export/import restrictions.",
+      },
+      {
+        title: "Payment Terms",
+        body: "Full payment is required before shipment unless otherwise agreed. All charges are non-refundable once services have been rendered.",
+      },
+    ];
+
+    for (const { title, body } of terms) {
+      drawText(`• ${title}`, { size: 10 });
+      drawWrappedText(body, { size: 8, color: rgb(0.3, 0.3, 0.3) });
     }
-  };
-  const handleDownloadOrOpen = () => {
-    if (!pdfUrl) return;
 
-    const isIOS =
-      /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    drawText("4. CUSTOMER DECLARATION", {
+      size: 12,
+      color: rgb(0.2, 0.2, 0.5),
+    });
 
-    if (isIOS) {
-      // On iOS, open in a new tab synchronously on user gesture
-      window.open(pdfUrl, "_blank");
-      alert("PDF opened in new tab. Use the Share button to save or print.");
+    const declaration =
+      "I hereby confirm that the above information is accurate and complete. I agree to the terms and conditions listed above and authorize AYCARGO to handle the cargo described.";
+
+    drawWrappedText(declaration, { size: 8 });
+
+    drawText("Customer Signature:", { size: 10 });
+
+    if (!sigPadRef.current.isEmpty()) {
+      const signatureDataUrl = sigPadRef.current
+        .getTrimmedCanvas()
+        .toDataURL("image/png");
+      const signatureBytes = await fetch(signatureDataUrl).then((res) =>
+        res.arrayBuffer()
+      );
+      const signatureImage = await pdfDoc.embedPng(signatureBytes);
+      const pngDims = signatureImage.scale(0.5);
+      page.drawImage(signatureImage, {
+        x: 50,
+        y: y - pngDims.height - 5,
+        width: pngDims.width,
+        height: pngDims.height,
+      });
+      y -= pngDims.height + 20;
     } else {
-      // On desktop and Android, trigger download
-      const link = document.createElement("a");
-      link.href = pdfUrl;
-      link.download = "Cargo_Disclosure_Form.pdf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(pdfUrl);
-      setPdfUrl(null);
+      drawText("[No signature provided]", { size: 10, color: rgb(1, 0, 0) });
     }
+
+    drawText(`Date: ${formattedDate}`, { size: 10 });
+
+    const pdfBytes = await pdfDoc.save();
+    const blob = new Blob([pdfBytes], { type: "application/pdf" });
+    saveAs(blob, "AYCARGO_Receipt.pdf");
   };
 
   return (
@@ -208,7 +288,7 @@ const Page = () => {
                 name={field.name}
                 value={formData[field.name]}
                 onChange={handleChange}
-                placeholder={field.placeholder}
+                placeholder={field.label}
                 className={styles.inputss}
                 required
               />
@@ -233,9 +313,6 @@ const Page = () => {
               Clear Signature
             </button>
           </div>
-          {isGenerating && (
-            <p className={styles.loading}>Generating PDF... Please waittt.</p>
-          )}
 
           <button
             type="button"
@@ -245,20 +322,8 @@ const Page = () => {
             Generate PDF
           </button>
         </form>
-        {/* Only show download/open button after PDF is ready */}
-        {pdfUrl && (
-          <button
-            onClick={handleDownloadOrOpen}
-            className={styles.downloadButton}
-          >
-            {/iPad|iPhone|iPod/.test(navigator.userAgent)
-              ? "Open PDF"
-              : "Download PDF"}
-          </button>
-        )}
-
         {/* Hidden styled container for PDF capture */}
-        <div
+        {/* <div
           id="pdf-content"
           style={{
             padding: "20px",
@@ -407,7 +472,7 @@ const Page = () => {
               readOnly
             />
           </div>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </>
