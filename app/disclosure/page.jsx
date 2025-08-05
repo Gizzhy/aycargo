@@ -7,12 +7,17 @@ import SignaturePad from "react-signature-canvas";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import { saveAs } from "file-saver";
 import styles from "./disclosure.module.scss";
+import dynamic from 'next/dynamic';
+
+
 // import logo from "../../assets/images/logo.svg";
 // import Image from "next/image";
 
 const Page = () => {
   const sigPadRef = useRef();
-
+  const SignaturePad = dynamic(() => import('react-signature-canvas'), {
+    ssr: false,
+  });
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
