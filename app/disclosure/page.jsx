@@ -3,21 +3,20 @@
 import React, { useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import SignaturePad from "react-signature-canvas";
+// import SignaturePad from "react-signature-canvas";
+import dynamic from 'next/dynamic';
+const SignaturePad = dynamic(() => import('react-signature-canvas'), {
+  ssr: false, // 👈 prevents server-side rendering
+});
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import { saveAs } from "file-saver";
 import styles from "./disclosure.module.scss";
-import dynamic from 'next/dynamic';
-
 
 // import logo from "../../assets/images/logo.svg";
 // import Image from "next/image";
 
 const Page = () => {
   const sigPadRef = useRef();
-  const SignaturePad = dynamic(() => import('react-signature-canvas'), {
-    ssr: false,
-  });
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
