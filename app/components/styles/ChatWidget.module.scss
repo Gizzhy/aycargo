@@ -1,0 +1,99 @@
+.chatWidget {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
+}
+
+.chatButton {
+  background: #f7761f;
+  color: white;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.chatWindow {
+  width: 340px;
+  height: 440px;
+  background: white;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.header {
+  background: #1C174F;
+  color: white;
+  padding: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+}
+
+.messages {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  background: #E8EEFF;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.userMessage {
+  background: #f7761f;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  max-width: 75%;
+  align-self: flex-end;
+}
+
+.botMessage {
+  background: white;
+  color: #333;
+  padding: 10px 14px;
+  border-radius: 10px;
+  max-width: 75%;
+  align-self: flex-start;
+}
+
+.typing {
+  font-size: 12px;
+  color: #555;
+}
+
+.inputArea {
+  display: flex;
+  border-top: 1px solid #ddd;
+
+  input {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    outline: none;
+  }
+
+  button {
+    background: #f7761f;
+    border: none;
+    color: white;
+    padding: 0 18px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+}
