@@ -10,7 +10,8 @@ import insta from "../../assets/icons/insta.svg";
 import x from "../../assets/icons/x.svg";
 import letter from "../../assets/icons/lettersend.svg";
 import Image from "next/image";
-// import { message } from "antd";
+// import axios from "axios";
+import Botpoison from "@botpoison/browser";
 
 const FORMSPARK_FORM_ID = "ltpqB5fry";
 
@@ -24,12 +25,23 @@ const Contact = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
+  const botpoison = new Botpoison({
+    publicKey: "pk_a62f2cf9-6226-4bc0-bae5-a25468864923",
+  });
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    const { solution } = await botpoison.challenge();
     setLoading(true);
     try {
-      await submit({ firstname, lastname, phone, email, messages });
+      await submit({
+        firstname,
+        lastname,
+        phone,
+        email,
+        messages,
+        _botpoison: solution,
+      });
       // message.success("Message sent successfully");
       alert("Message sent successfully");
     } catch (error) {

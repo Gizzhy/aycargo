@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import ClientLayout from "./ClientLayout";
-import ChatWidget from "./components/ChatWidget";
+// import ChatWidget from "./components/ChatWidget";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       {/* <ClientLayout /> */}
       <body className={poppins.className}>
         {children}
-        <ChatWidget />
+        {/* <ChatWidget /> */}
       </body>
     </html>
   );

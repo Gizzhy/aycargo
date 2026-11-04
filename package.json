@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@botpoison/browser": "^1.2.0",
     "@formspark/use-formspark": "github:formspark/use-formspark",
     "antd": "^5.25.3",
     "file-saver": "^2.0.5",
