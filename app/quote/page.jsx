@@ -9,9 +9,15 @@ import quote from "../../assets/images/quote.svg";
 import Image from "next/image";
 import { useFormspark } from "@formspark/use-formspark";
 import Faq from "../components/Faq";
+import Botpoison from "@botpoison/browser";
+
 const FORMSPARK_FORM_ID = "Dn8OHSGV3";
 
 const page = () => {
+  const botpoison = new Botpoison({
+    publicKey: "pk_a62f2cf9-6226-4bc0-bae5-a25468864923",
+  });
+
   useEffect(() => {
     document.title = "Get a Quote | AYCARGO";
   }, []);
@@ -33,6 +39,8 @@ const page = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    const { solution } = await botpoison.challenge();
+
     setLoading(true);
     try {
       await submit({
@@ -47,6 +55,7 @@ const page = () => {
         recipientAddress,
         senderPhone,
         senderEmail,
+        _botpoison: solution,
       });
       // message.success("Message sent successfully");
       alert("Message sent successfully");
